@@ -1,0 +1,96 @@
+1.insert 
+
+import mysql.connector
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="guru",
+    password="Guru",
+    database='e_ticket'
+    )
+mycursor=mydb.cursor()
+sql="INSERT INTO movie1 (cus_id,movie_id,movie_tickets)VALUES(%s,%s,%s)"
+val=("7","28","Gold")
+mycursor.execute(sql,val)
+mydb.commit()
+print(mycursor.rowcount,"record inserted")
+
+2.delete
+
+import mysql.connector
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="guru",
+    password="Guru",
+    database='e_ticket'
+    )
+mycursor=mydb.cursor()
+sql="DELETE FROM movie1 WHERE cus_id='7'"
+mycursor.execute(sql)
+mydb.commit()
+print(mycursor.rowcount,"record deleted")
+
+
+3.update
+
+import mysql.connector
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="guru",
+    password="Guru",
+    database='e_ticket'
+    )
+mycursor=mydb.cursor()
+sql="UPDATE movie1 SET movie_tickets='Elite' WHERE movie_id='3302'"
+mycursor.execute(sql)
+mydb.commit()
+print(mycursor.rowcount,"record(s) affected")
+
+4.drop
+
+import mysql.connector
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="guru",
+    password="Guru",
+    database='e_ticket'
+    )
+mycursor=mydb.cursor()
+sql="DROP TABLE orders"
+mycursor.execute(sql)
+
+
+5.select
+
+import mysql.connector
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="guru",
+    password="Guru",
+    database='e_ticket'
+    )
+mycursor=mydb.cursor()
+mycursor.execute("SELECT * FROM movie1")
+
+myresult=mycursor.fetchall()
+for x in myresult:
+    print(x)
+
+
+6.found
+
+import mysql.connector
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="guru",
+    password="Guru",
+    database='e_ticket'
+    )
+mycursor=mydb.cursor()
+mycursor.execute("SELECT cus_id FROM movie1 WHERE cus_id=76")
+myresult=mycursor.fetchall()
+if myresult:
+    for i in myresult:
+        print(i,"found")
+else:
+    print("empty")
+
